@@ -1,5 +1,4 @@
 from datetime import datetime, timedelta
-import os
 import requests
 import pandas as pd
 from utils.utils import get_csv_data, save_csv_data
