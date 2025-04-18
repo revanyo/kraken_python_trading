@@ -1,5 +1,4 @@
 import os
-import time
 import urllib.parse
 import hashlib
 import hmac
@@ -14,15 +13,11 @@ def get_kraken_signature(urlpath, data, secret):
     sigdigest = base64.b64encode(mac.digest())
     return sigdigest.decode()
 
-def handle_kraken_auth(urlpath):
+def handle_kraken_auth(urlpath, payload):
     if os.getenv("CI") != "true":
         load_dotenv()
     api_key = os.getenv("KRAKEN_API_KEY")
     api_sec = os.getenv("KRAKEN_API_SECRET")
-    nonce = str(int(time.time() * 1000))
-
-    payload = {
-        "nonce": nonce
-    }
+   
     signature = get_kraken_signature(urlpath, payload, api_sec)
-    return api_key, payload, signature
+    return api_key, signature
