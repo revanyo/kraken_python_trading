@@ -1,0 +1,38 @@
+name: Get Price Data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 18 * * *'
+
+jobs:
+  get_prices:
+    runs-on: ubuntu-latest
+    env:
+      CI: "true"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Function
+        run: |
+          python python/main.py
+
+      - name: Commit and push the updated CSV
+        run: |
+          CURRENT_DATE=$(date +'%Y-%m-%d')
+          git config --global user.name "github-actions"
+          git config --global user.email "50283360+revanyo@users.noreply.github.com"
+          git add data/historic_data.csv
+          git commit -m "Update prices after running on $CURRENT_DATE"
+          git push
