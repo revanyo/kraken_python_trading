@@ -32,7 +32,7 @@ jobs:
         run: |
           CURRENT_DATE=$(date +'%Y-%m-%d')
           git config --global user.name "github-actions"
-          git config --global user.email "50283360+revanyo@users.noreply.github.com"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/historic_data.csv
           git commit -m "Update prices after running on $CURRENT_DATE"
           git push
