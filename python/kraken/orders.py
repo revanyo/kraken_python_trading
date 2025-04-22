@@ -12,7 +12,7 @@ def get_current_price(pair):
 
     return float(last_price)
 
-def market_buy_coin(pair, amount):
+def post_market_order(pair, amount, type):
     urlpath = "/0/private/AddOrder"
     api_url = "https://api.kraken.com" + urlpath
 
@@ -21,7 +21,7 @@ def market_buy_coin(pair, amount):
     payload = {
         "nonce": nonce,
         "ordertype": "market",
-        "type": "buy",
+        "type": type,
         "volume": float(amount/get_current_price(pair)),
         "pair": pair,
         "cl_ord_id": str(uuid.uuid4()).replace("-", "")
