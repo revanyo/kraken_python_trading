@@ -1,6 +1,6 @@
 from datetime import datetime
 import requests
-from python.utils.utils import get_csv_data, save_csv_data
+from ..utils.utils import get_csv_data, save_csv_data
 
 
 def get_current_price(pair):

@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Function
         run: |
-          python python/kraken/price_collector.py
+          python -m python.kraken.price_collector
 
       - name: Commit and push the updated CSV
         run: |

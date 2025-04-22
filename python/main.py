@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import timedelta
 import pandas as pd
 from utils.utils import get_csv_data
 from kraken.orders import post_market_order
