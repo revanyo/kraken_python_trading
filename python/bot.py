@@ -1,7 +1,8 @@
 from datetime import timedelta
 import pandas as pd
 from utils.utils import get_csv_data
-from kraken.orders import post_market_order
+from kraken.kraken_functions import post_market_order
+from kraken.kraken_functions import get_current_balance_in_usd
 
 def analyze_data():
      df = get_csv_data("historic_data",index_col=0)
@@ -21,10 +22,11 @@ def analyze_data():
 
             change = current - past
             pct_change = round(((change / past)*100),2)
-            print(f"{pct_change}%")
             if pct_change <= -5:
                 post_market_order(pair, 5, "buy")
             if pct_change >= 10:
-                post_market_order(pair, 10, "sell")
+                if get_current_balance_in_usd(coin) >= 10:
+                    post_market_order(pair, 10, "sell")
         except:
             print(f"{coin}: Could not compare (missing or invalid data)")
+
