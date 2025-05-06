@@ -22,4 +22,4 @@ coin_map = {
     'near': 'NEAR',
     'doge': 'DOGE',
     'icp': 'ICP'
-}   
+}
