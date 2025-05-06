@@ -1,8 +1,8 @@
 from datetime import timedelta
 import pandas as pd
-from utils.utils import get_csv_data
-from kraken.kraken_functions import post_market_order
-from kraken.kraken_functions import get_current_balance_in_usd
+from .utils.utils import get_csv_data
+from .kraken.kraken_functions import post_market_order
+from .kraken.kraken_functions import get_current_balance_in_usd
 
 def analyze_data():
      df = get_csv_data("historic_data",index_col=0)
@@ -30,3 +30,4 @@ def analyze_data():
         except:
             print(f"{coin}: Could not compare (missing or invalid data)")
 
+analyze_data()
