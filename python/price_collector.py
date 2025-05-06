@@ -1,6 +1,6 @@
 from datetime import datetime
-from utils.utils import get_csv_data, save_csv_data
-from kraken.kraken_functions import get_current_price
+from .utils.utils import get_csv_data, save_csv_data
+from .kraken.kraken_functions import get_current_price
 
 def get_prices():
     pairs = get_csv_data("pairs")
