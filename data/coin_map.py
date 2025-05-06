@@ -20,5 +20,6 @@ coin_map = {
     'pol': 'POL',
     'pepe': 'PEPE',
     'near': 'NEAR',
-    'doge': 'DOGE'
+    'doge': 'DOGE',
+    'icp': 'ICP'
 }   
