@@ -24,7 +24,6 @@ def get_prices():
     for coin, price in new_data.items():
         df.at[coin, today] = price
 
-
     save_csv_data(df, "historic_data")
 
 get_prices()

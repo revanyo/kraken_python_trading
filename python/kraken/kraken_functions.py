@@ -37,7 +37,9 @@ def post_market_order(pair, amount, type):
         "API-Sign": signature,
         "User-Agent": "kraken-api-client"
     }
-    requests.post(api_url, headers=headers, data=payload)
+
+    response=requests.post(api_url, headers=headers, data=payload).json()
+    print(response)
 
 def get_current_balance(coin):
     coin_map = load_dict_file("coin_map")
